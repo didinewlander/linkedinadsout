@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "linkedIn-adsOUT",
+    "version": "1.0",
+    "permissions": ["activeTab","storage"],
+    "content_scripts": [
+        {
+          "matches": ["https://www.linkedin.com/*"],
+          "js": ["content.js"],
+          "run_at": "document_start",
+          "all_frames": true
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "128": "icon128.png"
+        }
+    },
+    "icons": {
+        "128": "icon128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+}
