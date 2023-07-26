@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "linkedIN-adsOUT",
+    "name": "Linked : IN | Ads : OUT",
     "version": "3.0",
     "description":"Get rid of irrelevant content on LinkedIN, with all the ads OUT",
     "permissions": ["activeTab","storage"],
