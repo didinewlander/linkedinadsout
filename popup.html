@@ -6,8 +6,15 @@
     <script src="content.js"></script>
     <style>
       /* The switch - the box around the slider */
-      *{
-        border-radius:16px;
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.4rem;
+        padding: 1rem;
+        border: 1px solid black;
+        border-radius: 16px;
+        width:200px;
       }
       .switch {
         position: relative;
@@ -74,10 +81,11 @@
   </head>
   <body>
     <img src="icon128.png" alt="" />
-    <h1>Hide Ads on LinkedIn</h1>
+    <h1 id="linkedInState">Linked : IN</h1>
     <label class="switch">
       <input type="checkbox" id="toggleVisibility" />
       <span class="slider round"></span>
     </label>
+    <h1 id="adsState">Ads : IN</h1>
   </body>
 </html>

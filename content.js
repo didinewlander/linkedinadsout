@@ -6,9 +6,9 @@ function modifyPage() {
         element.remove();
     }
     element = document.querySelector('aside');
-    if(element) element.remove();
+    if (element) element.remove();
     element = document.querySelector('footer');
-    if(element) element.remove();
+    if (element) element.remove();
     // Adjust the width in :root CSS
     let root = document.querySelector(':root');
     root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
@@ -21,7 +21,7 @@ function modifyPage() {
         let isPromoted = post.querySelector('.update-components-actor__sub-description');
 
         if (isPromoted && isPromoted.textContent.includes('Promoted')) {
-            post.innerHTML = '<p>This post was a promotion and has been removed.</p>';
+            post.style = "display:none";
         }
     });
 
