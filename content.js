@@ -3,12 +3,12 @@ function modifyPage() {
     // Remove the <aside> element
     let element = document.querySelector('aside');
     if (element) {
-        element.remove();
+        element.style = "display:none";
     }
     element = document.querySelector('aside');
-    if (element) element.remove();
+    if (element) element.style = "display:none";
     element = document.querySelector('footer');
-    if (element) element.remove();
+    if (element) element.style = "display:none";
     // Adjust the width in :root CSS
     let root = document.querySelector(':root');
     root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");

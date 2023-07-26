@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             linkedInState.style.color = 'gray';
             linkedInState.innerText = "Linked : OUT";
             adsState.style.color = 'green';
-            adsState.innerText = "Ads : OUT";
+            adsState.innerText = "Ads : IN";
 
         }
     }
