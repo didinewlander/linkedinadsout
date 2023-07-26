@@ -1,10 +1,14 @@
 // Function to perform modifications
 function modifyPage() {
     // Remove the <aside> element
-    let element = document.querySelector('aside.scaffold-layout__aside[aria-label="Add to your feed"]');
+    let element = document.querySelector('aside');
     if (element) {
         element.remove();
     }
+    element = document.querySelector('aside');
+    if(element) element.remove();
+    element = document.querySelector('footer');
+    if(element) element.remove();
     // Adjust the width in :root CSS
     let root = document.querySelector(':root');
     root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
