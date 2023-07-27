@@ -13,8 +13,8 @@ function modifyPage() {
     let root = document.querySelector(':root');
     root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
 
-    let responseBar = document.querySelector('feed-shared-social-actions feed-shared-social-action-bar social-detail-base-social-actions feed - shared - social - action - bar--full - width feed - shared - social - action - bar--has - social - counts')
-    responseBar.style = "margin:0; justify-content: space-around";
+    // let responseBar = document.querySelector('feed-shared-social-actions')
+    // responseBar.style = "margin:0; justify-content: space-around";
     // Find all div elements (assuming each post is in a div)
     // Find all promoted posts
     let promotedPosts = document.querySelectorAll('.feed-shared-update-v2');
