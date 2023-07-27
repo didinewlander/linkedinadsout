@@ -27,10 +27,10 @@ function modifyPage() {
     toggleVisibility(document.querySelector('.ad-banner-container'), false); // Hide the promoted aside
     let footer = document.querySelector('footer');
     let sc = document.querySelector('.scaffold-layout__sticky-content');
-    sc.appendChild(footer);
+    if (footer && sc) sc.appendChild(footer);
     toggleVisibility(document.querySelector('aside'), false);
     let root = document.querySelector(':root');
-    root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
+    if (root) root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
     hidePromotedPosts();
 }
 
