@@ -28,6 +28,9 @@ function modifyPage() {
     let footer = document.querySelector('footer');
     let sc = document.querySelector('.scaffold-layout__sticky-content');
     sc.appendChild(footer);
+    toggleVisibility(document.querySelector('aside'), false);
+    let root = document.querySelector(':root');
+    root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
     hidePromotedPosts();
 }
 
