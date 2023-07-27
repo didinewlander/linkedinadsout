@@ -36,7 +36,6 @@ function modifyPage() {
 // Perform modifications if the extension is enabled
 chrome.storage.sync.get('toggleState', function (data) {
     if (data.toggleState) {
-        modifyPage()
         setInterval(modifyPage, 5000);
 
         // // Create a MutationObserver instance to watch for changes in the document
