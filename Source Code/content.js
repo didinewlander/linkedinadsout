@@ -1,48 +1,42 @@
-// Function to perform modifications
-function modifyPage() {
-    // Remove the <aside> element
-    let element = document.querySelector('aside');
+// Function to add or remove the CSS class to hide/show elements
+function toggleVisibility(element, isVisible) {
     if (element) {
-        element.style = "display:none";
+        if (isVisible) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
     }
-    element = document.querySelector('aside');
-    if (element) element.style = "display:none";
-    element = document.querySelector('footer');
-    if (element) element.style = "display:none";
-    // Adjust the width in :root CSS
-    let root = document.querySelector(':root');
-    root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
+}
 
-    // let responseBar = document.querySelector('feed-shared-social-actions')
-    // responseBar.style = "margin:0; justify-content: space-around";
-    // Find all div elements (assuming each post is in a div)
-    // Find all promoted posts
+// Function to hide promoted posts
+function hidePromotedPosts() {
     let promotedPosts = document.querySelectorAll('.feed-shared-update-v2');
-
     promotedPosts.forEach((post) => {
-        let isPromoted = post.querySelector('.update-components-actor__sub-description');
-
+        let isPromoted = post.querySelector('.update-components-actor__sub-description');   
         if (isPromoted && isPromoted.textContent.includes('Promoted')) {
-            post.style = "display:none";
+            toggleVisibility(post, false); 
+        } else {
+            toggleVisibility(post, true);
         }
     });
+}
 
+// Function to perform modifications
+function modifyPage() {
+    toggleVisibility(document.querySelector('.ad-banner-container'), false); // Hide the promoted aside
+    let footer = document.querySelector('footer');
+    let sc = document.querySelector('.scaffold-layout__sticky-content');
+    sc.appendChild(footer);
+    toggleVisibility(document.querySelector('aside'), false);
+    let root = document.querySelector(':root');
+    root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
+    hidePromotedPosts();
 }
 
 // Perform modifications if the extension is enabled
 chrome.storage.sync.get('toggleState', function (data) {
     if (data.toggleState) {
-        // Set delay (5000 milliseconds = 5 seconds)
-        setTimeout(modifyPage, 5000);
-
         setInterval(modifyPage, 5000);
-
-        // // Create a MutationObserver instance to watch for changes in the document
-        // let observer = new MutationObserver(function(mutationsList, observer) {
-        //     modifyPage();
-        // });
-
-        // // Start observing the document with the configured parameters
-        // observer.observe(document.body, { childList: true, subtree: true });
     }
 });
