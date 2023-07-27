@@ -2,7 +2,7 @@
         "manifest_version": 3,
         "name": "Linked : IN | Ads : OUT",
         "version": "3.1",
-        "description": "Get rid of irrelevant content on LinkedIN, with all the ads OUT",
+        "description": "Get rid of irrelevant content on LinkedIn, with all the ads OUT",
         "permissions": [
             "activeTab",
             "storage"
@@ -26,7 +26,7 @@
             }
         },
         "icons": {
-            "128": "icon128.png"
+            "128": "../icon128.png"
         },
         "background": {
             "service_worker": "background.js"
