@@ -12,14 +12,12 @@ function toggleVisibility(element, isVisible) {
 // Function to hide promoted posts
 function hidePromotedPosts() {
     let promotedPosts = document.querySelectorAll('.feed-shared-update-v2');
-    
     promotedPosts.forEach((post) => {
-        let isPromoted = post.querySelector('.update-components-actor__sub-description');
-        
+        let isPromoted = post.querySelector('.update-components-actor__sub-description');   
         if (isPromoted && isPromoted.textContent.includes('Promoted')) {
-            toggleVisibility(post, false); // Hide the post
+            toggleVisibility(post, false); 
         } else {
-            toggleVisibility(post, true); // Show the post
+            toggleVisibility(post, true);
         }
     });
 }
@@ -37,13 +35,5 @@ function modifyPage() {
 chrome.storage.sync.get('toggleState', function (data) {
     if (data.toggleState) {
         setInterval(modifyPage, 5000);
-
-        // // Create a MutationObserver instance to watch for changes in the document
-        // let observer = new MutationObserver(function(mutationsList, observer) {
-        //     modifyPage();
-        // });
-
-        // // Start observing the document with the configured parameters
-        // observer.observe(document.body, { childList: true, subtree: true });
     }
 });
