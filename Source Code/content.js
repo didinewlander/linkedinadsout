@@ -1,3 +1,4 @@
+var total = 0;
 // Function to perform modifications
 function modifyPage() {
     // Remove the <aside> element
@@ -18,15 +19,18 @@ function modifyPage() {
     // Find all div elements (assuming each post is in a div)
     // Find all promoted posts
     let promotedPosts = document.querySelectorAll('.feed-shared-update-v2');
-
+    let count = 0;
     promotedPosts.forEach((post) => {
         let isPromoted = post.querySelector('.update-components-actor__sub-description');
 
         if (isPromoted && isPromoted.textContent.includes('Promoted')) {
             post.style = "display:none";
+            count++;
         }
     });
-
+    total = (count > total) ? count : total;
+    chrome.storage.sync.set({ total: total });
+    window.console.log(`a total of ${total} promoted posts have been caught in the current session.`)
 }
 
 // Perform modifications if the extension is enabled
@@ -34,7 +38,7 @@ chrome.storage.sync.get('toggleState', function (data) {
     if (data.toggleState) {
         // Set delay (5000 milliseconds = 5 seconds)
         setTimeout(modifyPage, 5000);
-
+        
         setInterval(modifyPage, 5000);
 
         // // Create a MutationObserver instance to watch for changes in the document

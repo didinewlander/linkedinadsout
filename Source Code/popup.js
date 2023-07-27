@@ -1,7 +1,16 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const checkbox = document.getElementById('toggleVisibility');
     const linkedInState = document.getElementById('linkedInState');
     const adsState = document.getElementById('adsState');
+
+    var blockedAmount = document.createElement('h3');
+    chrome.storage.sync.get('total', function(data) {
+        const total = data.total || 0;
+        blockedAmount.textContent = `${total} promoted posts were blocked!`;
+    });
+    document.body.appendChild(blockedAmount);
+
 
     // Set the initial state of the checkbox
     chrome.storage.sync.get('toggleState', function(data) {
@@ -30,12 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
             linkedInState.innerText = "Linked : IN";
             adsState.style.color = 'gray';
             adsState.innerText = "Ads : OUT"
+            blockedAmount.style.display = '';
         } else {
             linkedInState.style.color = 'gray';
             linkedInState.innerText = "Linked : OUT";
             adsState.style.color = 'green';
             adsState.innerText = "Ads : IN";
-
+            blockedAmount.style = "display:none";
         }
     }
 });
