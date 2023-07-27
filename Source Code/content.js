@@ -12,10 +12,10 @@ function toggleVisibility(element, isVisible) {
 // Function to hide promoted posts
 function hidePromotedPosts() {
     let promotedPosts = document.querySelectorAll('.feed-shared-update-v2');
-
+    
     promotedPosts.forEach((post) => {
         let isPromoted = post.querySelector('.update-components-actor__sub-description');
-
+        
         if (isPromoted && isPromoted.textContent.includes('Promoted')) {
             toggleVisibility(post, false); // Hide the post
         } else {
@@ -26,14 +26,17 @@ function hidePromotedPosts() {
 
 // Function to perform modifications
 function modifyPage() {
-    toggleVisibility(document.querySelector('aside'), false); // Hide the aside
-    toggleVisibility(document.querySelector('footer'), false); // Hide the footer
+    toggleVisibility(document.querySelector('.ad-banner-container'), false); // Hide the promoted aside
+    let footer = document.querySelector('footer');
+    let sc = document.querySelector('.scaffold-layout__sticky-content');
+    sc.appendChild(footer);
     hidePromotedPosts();
 }
 
 // Perform modifications if the extension is enabled
 chrome.storage.sync.get('toggleState', function (data) {
     if (data.toggleState) {
+        modifyPage()
         setInterval(modifyPage, 5000);
 
         // // Create a MutationObserver instance to watch for changes in the document
