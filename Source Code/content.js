@@ -12,7 +12,7 @@ function modifyPage() {
   });
 
   // Adjust the width in :root CSS
-  let root = document.querySelector(":root");
+  const root = document.querySelector(":root");
   root.style.setProperty(
     "--scaffold-layout-aside-width",
     "minmax(0,0px)",
@@ -23,14 +23,17 @@ function modifyPage() {
   // responseBar.style = "margin:0; justify-content: space-around";
   // Find all div elements (assuming each post is in a div)
   // Find all promoted posts
-  let promotedPosts = document.querySelectorAll(".feed-shared-update-v2");
+  const promotedPosts = document.querySelectorAll(".feed-shared-update-v2");
 
   promotedPosts.forEach((post) => {
-    let isPromoted = post.querySelector(
+    const isPromoted = post.querySelector(
       ".update-components-actor__sub-description"
     );
 
-    if (isPromoted && isPromoted.textContent.includes("Promoted")) {
+    if (
+      isPromoted &&
+      isPromoted.textContent.toLowerCase().includes("promoted")
+    ) {
       post.remove();
     }
   });
