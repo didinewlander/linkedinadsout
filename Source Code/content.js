@@ -1,13 +1,12 @@
 // Function to add or remove the CSS class to hide/show elements
 function toggleVisibility(element, isVisible) {
     if (element) {
-        if (isVisible) {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
+        element.style.display = isVisible ? 'block' : 'none';
+    } else {
+        console.error('Element not found');
     }
 }
+
 
 // Function to hide promoted posts
 function hidePromotedPosts() {
@@ -30,7 +29,7 @@ function modifyPage() {
     if (footer && sc) sc.appendChild(footer);
     toggleVisibility(document.querySelector('aside'), false);
     let root = document.querySelector(':root');
-    if (root) root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,0px)", "important");
+    if (root) root.style.setProperty("--scaffold-layout-aside-width", "minmax(0,20px)", "important");
     hidePromotedPosts();
 }
 
