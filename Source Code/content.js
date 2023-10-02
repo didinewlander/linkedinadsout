@@ -35,7 +35,7 @@ function moveFooter() {
 function setAsideWidth() {
     const root = document.querySelector(':root');
     if (root) {
-        root.style.setProperty("--scaffold-layout-aside-width", "minmax(0, 20px)", "important");
+        root.style.setProperty("--scaffold-layout-aside-width", `minmax(0, 20px)`, "important");
     } else {
         console.error('Root element not found');
     }
@@ -46,9 +46,9 @@ function hidePromotedPosts() {
 }
 
 function modifyPage() {
-    toggleVisibility(document.querySelector('.ad-banner-container'), false);  // Hide ad banner
+    toggleVisibility(document.querySelector('.ad-banner-container'), false);  // Hide ad banners
     moveFooter();  // Move footer inside sticky content
-    toggleVisibility(document.querySelector('aside'), false);  // Hide aside
+    toggleVisibility(document.querySelector('aside'), false);  // Hide side panel
     setAsideWidth();  // Set aside width
     hidePromotedPosts();  // Hide promoted posts
 }
